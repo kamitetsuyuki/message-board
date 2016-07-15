@@ -12,6 +12,20 @@
   </div>
 </div>
 
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.present? %>
+    <div class="alert alert-danger">
+      <%= alert %>
+      <ul>
+        <% @message.errors.full_messages.each do |full_message| %>
+          <li>
+            <%= full_message %>
+          </li>
+        <% end %> 
+      </ul>
+    </div>
+  <% end %>
+
 <%= form_for(@message, html: { class: "form-horizontal" }) do |f| %>
 
   <div class="form-group">
@@ -33,4 +47,5 @@
       <%= f.submit class: "btn btn-sm btn-primary"%>
     </div>
   </div>
+<% end %>
 <% end %>
